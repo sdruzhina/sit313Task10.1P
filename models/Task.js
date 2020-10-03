@@ -16,11 +16,27 @@ const taskSchema = new mongoose.Schema(
             enum: ['CHOICE', 'DECISION', 'SENTENCE'],
             default: 'CHOICE'
         },
+        responses: {
+            type: Map,
+            of: String
+        },
+        master: {
+            type: Boolean
+        },
+        numberWorkers: {
+            type: Number,
+            default: 1
+        },
+        reward: {
+            type: Number
+        },
         expiry: {
             type: Date,
             required: true,
-            trim: true
         },
+        createdAt: {
+            type: Date,
+        }
     }
 )
 
