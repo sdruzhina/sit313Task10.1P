@@ -2,6 +2,7 @@ import React from 'react';
 import TaskList from './TaskList'
 import './RequesterTasks.css';
 import { Container, Header, Card, Button } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
 function RequesterTasks() {
   return (
@@ -10,7 +11,9 @@ function RequesterTasks() {
         <Header as='h1'>
           Requester Tasks
         </Header>
-        <Button positive className="new-task-button">+ New Task</Button>
+        <Link to='/create'>
+          <Button positive className="new-task-button">+ New Task</Button>
+        </Link>
         <Card.Group>
           <TaskList />
         </Card.Group>

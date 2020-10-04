@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import tasks from './tasks'
 import TaskCard from './TaskCard'
-
 
 function TaskList() {
 
