@@ -1,15 +1,16 @@
 import React from 'react';
 import TaskList from './TaskList'
 import './RequesterTasks.css';
-import { Container, Segment, Header, Card } from 'semantic-ui-react'
+import { Container, Header, Card, Button } from 'semantic-ui-react'
 
 function RequesterTasks() {
   return (
     <div>
-      <Header as='h1'>
-        Requester Tasks
-      </Header>
       <Container>
+        <Header as='h1'>
+          Requester Tasks
+        </Header>
+        <Button positive className="new-task-button">+ New Task</Button>
         <Card.Group>
           <TaskList />
         </Card.Group>

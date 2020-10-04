@@ -10,12 +10,7 @@ function App() {
   return (
     <div className="App">
       <PageHeader />
-      <Segment
-        textAlign='center'
-      >
-        <RequesterTasks />
-      </Segment>
-      <PageFooter />
+      <RequesterTasks />
     </div>
   );
 }
