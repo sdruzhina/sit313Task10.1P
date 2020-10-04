@@ -10,9 +10,9 @@ function PageHeader() {
           vertical
         >
         <Menu
-          inverted='true'
-          pointing='true'
-          secondary='true'
+          inverted
+          pointing
+          secondary
           size='large'
         >
           <Container>
