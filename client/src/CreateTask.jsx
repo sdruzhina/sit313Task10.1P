@@ -11,6 +11,17 @@ function CreateTask() {
 
   });
 
+  // Event handler
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setTaskData((data) => {
+      return {
+        ...data,
+        [name]: value
+      };
+    });
+  }
+
   return (
     <div>
       <Container>
@@ -18,13 +29,13 @@ function CreateTask() {
           New Task
         </Header>
         <Segment>
-          <TaskType />
+          <TaskType onChange={handleChange} />
 
           <div className='action-buttons'>
             <Link to='/'>
               <Button>Cancel</Button>
             </Link>
-            <Button positive>Create Task</Button>
+            <Button positive>Save</Button>
           </div>
         </Segment>
       </Container>
