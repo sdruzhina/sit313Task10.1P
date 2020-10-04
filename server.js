@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://sergei:Deakin2020@cluster0.t3ayv.mongodb.net/iCr
 
 // Entry point - login page
 app.get('/', (req, res) => {
-    res.redirect('/requester/tasks');
+    res.json('Home');
 })
 
 let port = process.env.PORT;

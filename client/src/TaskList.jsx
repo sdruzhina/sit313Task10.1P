@@ -13,7 +13,7 @@ function TaskList() {
       .then(res => res.json())
       .then(res => setTasks(res))
       .catch((err) => console.log(err));
-  })
+  }, [])
 
   return (
     tasks.map((task) => 
