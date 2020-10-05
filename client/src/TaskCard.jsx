@@ -1,5 +1,4 @@
 import React from 'react';
-import './TaskCard.css';
 import { Card } from 'semantic-ui-react' 
 
 function TaskCard(props) {

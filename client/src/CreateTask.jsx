@@ -4,6 +4,7 @@ import { Container, Segment, Header, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import TaskType from './CreateTaskForm/TaskType';
 import TaskDetails from './CreateTaskForm/TaskDetails';
+import WorkerRequirements from './CreateTaskForm/WorkerRequirements';
 
 function CreateTask() {
 
@@ -13,6 +14,10 @@ function CreateTask() {
     title: '',
     description: '',
     expiry: '',
+    responses: {},
+    master: false,
+    numberWorkers: 1,
+    reward: 0
   });
 
   // Event handler
@@ -43,7 +48,12 @@ function CreateTask() {
             expiry={taskData.expiry} 
             onTaskDetailsChange={handleChange} 
           />
-
+          <WorkerRequirements 
+            master={taskData.master} 
+            reward={taskData.reward} 
+            numberWorkers={taskData.numberWorkers} 
+            onTaskDetailsChange={handleChange} 
+          />
           <div className='action-buttons'>
             <Link to='/'>
               <Button>Cancel</Button>

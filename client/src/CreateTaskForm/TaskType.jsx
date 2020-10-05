@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Checkbox } from 'semantic-ui-react';
-import './TaskType.css';
 
 function TaskType(props) {
 
@@ -12,7 +11,7 @@ function TaskType(props) {
   }
 
   return (
-    <Form className='flex'>
+    <Form className='flex-form'>
       <Form.Field>
         Select task type:
       </Form.Field>
