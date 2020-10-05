@@ -5,7 +5,9 @@ function TaskSetupChoice(props) {
 
   // Set up potential responses
   // const [responsesArray, setResponseArray] = useState([{id: 1, text: ''}]);
-  const [responsesArray, setResponseArray] = useState(props.responses);
+  const [responsesArray, setResponseArray] = useState(
+    props.responses ? props.responses : [{id: 1, text: ''}]
+    );
 
   function addOption() {
     const index = responsesArray.length + 1;

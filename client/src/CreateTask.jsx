@@ -15,7 +15,7 @@ function CreateTask() {
     title: '',
     description: '',
     expiry: '',
-    responses: [{id: 1, text: ''}],
+    responses: null,
     master: false,
     numberWorkers: 1,
     reward: 0
