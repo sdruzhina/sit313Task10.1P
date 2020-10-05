@@ -20,11 +20,6 @@ router.get('/requester/tasks', (req, res) => {
 
 // Create a new task
 router.post('/requester/tasks', (req, res) => {
-
-    // TODO: change 
-    const expiry = new Date();
-    expiry.setDate(expiry.getDate() + 7);
-
     const task = new Task({ 
         requesterId: '5f765a458f54040004e70a61', // TODO - change to current user
         title: req.body.title,
@@ -34,8 +29,8 @@ router.post('/requester/tasks', (req, res) => {
         master: req.body.master,
         numberWorkers: req.body.numberWorkers,
         reward: req.body.reward,
-        expiry: expiry,         // TODO 
-        createdAt: Date.now()   // TODO 
+        expiry: Date.parse(req.body.expiry),
+        createdAt: Date.now()
     });
     task.save((err) => {
         if (err) {

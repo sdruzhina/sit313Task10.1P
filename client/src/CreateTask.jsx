@@ -43,6 +43,18 @@ function CreateTask() {
     });
   }
 
+  function saveTask() {
+    fetch('http://localhost:8080/requester/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(taskData)
+    })
+    .then(res => res.json())
+    .catch((err) => console.log(err));
+  }
+
   // Render appropriate celement depending on task type
   function renderTaskSetup() {
     switch (taskData.type) {
@@ -96,7 +108,7 @@ function CreateTask() {
             <Link to='/'>
               <Button>Cancel</Button>
             </Link>
-            <Button positive>Save</Button>
+            <Button positive onClick={saveTask}>Save</Button>
           </div>
         </Segment>
       </Container>

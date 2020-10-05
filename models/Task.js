@@ -23,7 +23,7 @@ const taskSchema = new mongoose.Schema(
             default: 'CHOICE'
         },
         responses: {
-            type: Map,
+            type: Object,
             of: String
         },
         master: {
