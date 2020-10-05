@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import TaskType from './CreateTaskForm/TaskType';
 import TaskDetails from './CreateTaskForm/TaskDetails';
 import WorkerRequirements from './CreateTaskForm/WorkerRequirements';
+import TaskSetupChoice from './CreateTaskForm/TaskSetupChoice';
 
 function CreateTask() {
 
@@ -14,7 +15,7 @@ function CreateTask() {
     title: '',
     description: '',
     expiry: '',
-    responses: {},
+    responses: [{id: 1, text: ''}],
     master: false,
     numberWorkers: 1,
     reward: 0
@@ -48,6 +49,11 @@ function CreateTask() {
             expiry={taskData.expiry} 
             onTaskDetailsChange={handleChange} 
           />
+          <TaskSetupChoice
+            responses={taskData.responses} 
+            onTaskDetailsChange={handleChange}  
+          />
+
           <WorkerRequirements 
             master={taskData.master} 
             reward={taskData.reward} 

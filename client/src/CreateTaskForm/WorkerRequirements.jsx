@@ -61,7 +61,6 @@ function WorkerRequirements(props) {
             />
           </Form.Field>
         </Form.Group>
-
       </Form>
     </div>
   );

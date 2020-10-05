@@ -44,7 +44,7 @@ function TaskDetails(props) {
           <Form.Field>
             <label className='label'>Expiry</label>
             <SemanticDatepicker 
-              datePickerOnly='true'
+              datePickerOnly={true}
               name='expiry'
               onChange={handleChange}
             />
