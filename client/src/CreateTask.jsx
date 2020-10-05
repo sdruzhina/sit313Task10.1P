@@ -9,13 +9,15 @@ function CreateTask() {
 
   // Form data
   const [taskData, setTaskData] = useState({
-    taskType: 'CHOICE',
+    type: 'CHOICE',
+    title: '',
+    description: '',
+    expiry: '',
   });
 
   // Event handler
   const handleChange = (e) => {
     const {name, value} = e;
-    console.log(e);
     setTaskData((data) => {
       return {
         ...data,
@@ -31,8 +33,16 @@ function CreateTask() {
           New Task
         </Header>
         <Segment>
-          <TaskType taskType={taskData.taskType} onTaskTypeChange={handleChange} />
-          <TaskDetails taskType={taskData.TaskDetails} onTaskDetailsChange={handleChange} />
+          <TaskType 
+            type={taskData.type} 
+            onTaskTypeChange={handleChange} 
+          />
+          <TaskDetails 
+            title={taskData.title} 
+            description={taskData.description} 
+            expiry={taskData.expiry} 
+            onTaskDetailsChange={handleChange} 
+          />
 
           <div className='action-buttons'>
             <Link to='/'>

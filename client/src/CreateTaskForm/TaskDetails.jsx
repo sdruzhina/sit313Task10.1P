@@ -6,11 +6,9 @@ import './TaskDetails.css';
 
 function TaskDetails(props) {
 
-  const TaskDetails = props.TaskDetails;
-
   // Event handler
-  const handleChange = (e, { value }) => {
-    props.onTaskDetailsChange({name: 'TaskDetails', value: value});
+  const handleChange = (e, data) => {
+    props.onTaskDetailsChange(data);
   }
 
   return (
@@ -20,19 +18,35 @@ function TaskDetails(props) {
         <Form.Group inline>
           <Form.Field>
             <label className='label'>Title</label>
-            <Input placeholder='Enter task title' style={{width: "480px"}}/>
+            <Input 
+              name='title'
+              placeholder='Enter task title' 
+              value={props.title}
+              style={{width: "480px"}}
+              onChange={handleChange}
+            />
           </Form.Field>
         </Form.Group>
         <Form.Group inline>
           <Form.Field>
             <label className='label'>Description</label>
-            <Input placeholder='Enter task description' style={{width: "480px"}}/>
+            <Input 
+              placeholder='Enter task description' 
+              name='description'
+              value={props.description}
+              style={{width: "480px"}}
+              onChange={handleChange}
+            />
           </Form.Field>
         </Form.Group>
         <Form.Group inline>
           <Form.Field>
             <label className='label'>Expiry</label>
-            <SemanticDatepicker datePickerOnly='true' />
+            <SemanticDatepicker 
+              datePickerOnly='true'
+              name='expiry'
+              onChange={handleChange}
+            />
           </Form.Field>
         </Form.Group>
       </Form>

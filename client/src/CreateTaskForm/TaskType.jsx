@@ -4,11 +4,11 @@ import './TaskType.css';
 
 function TaskType(props) {
 
-  const taskType = props.taskType;
+  const type = props.type;
 
   // Event handler
   const handleChange = (e, { value }) => {
-    props.onTaskTypeChange({name: 'taskType', value: value});
+    props.onTaskTypeChange({name: 'type', value: value});
   }
 
   return (
@@ -20,9 +20,9 @@ function TaskType(props) {
         <Checkbox
           radio
           label='Choice Task'
-          name='taskType'
+          name='type'
           value='CHOICE'
-          checked={taskType === 'CHOICE'}
+          checked={type === 'CHOICE'}
           onChange={handleChange}
         />
       </Form.Field>
@@ -30,9 +30,9 @@ function TaskType(props) {
         <Checkbox
           radio
           label='Decision-Making Task'
-          name='taskType'
+          name='type'
           value='DECISION'
-          checked={taskType === 'DECISION'}
+          checked={type === 'DECISION'}
           onChange={handleChange}
         />
       </Form.Field>
@@ -40,9 +40,9 @@ function TaskType(props) {
         <Checkbox
           radio
           label='Sentence-Level Task'
-          name='taskType'
+          name='type'
           value='SENTENCE'
-          checked={taskType === 'SENTENCE'}
+          checked={type === 'SENTENCE'}
           onChange={handleChange}
         />
       </Form.Field>
