@@ -6,6 +6,7 @@ import TaskType from './CreateTaskForm/TaskType';
 import TaskDetails from './CreateTaskForm/TaskDetails';
 import WorkerRequirements from './CreateTaskForm/WorkerRequirements';
 import TaskSetupChoice from './CreateTaskForm/TaskSetupChoice';
+import TaskSetupDecision from './CreateTaskForm/TaskSetupDecision';
 
 function CreateTask() {
 
@@ -25,10 +26,19 @@ function CreateTask() {
   const handleChange = (e) => {
     const {name, value} = e;
     setTaskData((data) => {
-      return {
-        ...data,
-        [name]: value
-      };
+      if (name != 'type') {
+        return {
+          ...data,
+          [name]: value
+        };
+      }
+      else {
+        return {
+          ...data,
+          [name]: value,
+          responses: null
+        };
+      }
     });
   }
 
@@ -50,6 +60,10 @@ function CreateTask() {
             onTaskDetailsChange={handleChange} 
           />
           <TaskSetupChoice
+            responses={taskData.responses} 
+            onTaskDetailsChange={handleChange}  
+          />
+          <TaskSetupDecision
             responses={taskData.responses} 
             onTaskDetailsChange={handleChange}  
           />
