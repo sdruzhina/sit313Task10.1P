@@ -7,6 +7,7 @@ import TaskDetails from './CreateTaskForm/TaskDetails';
 import WorkerRequirements from './CreateTaskForm/WorkerRequirements';
 import TaskSetupChoice from './CreateTaskForm/TaskSetupChoice';
 import TaskSetupDecision from './CreateTaskForm/TaskSetupDecision';
+import TaskSetupSentence from './CreateTaskForm/TaskSetupSentence';
 
 function CreateTask() {
 
@@ -42,6 +43,29 @@ function CreateTask() {
     });
   }
 
+  // Render appropriate celement depending on task type
+  function renderTaskSetup() {
+    switch (taskData.type) {
+      case 'CHOICE':
+        return <TaskSetupChoice
+          responses={taskData.responses} 
+          onTaskDetailsChange={handleChange}  
+        />;
+      case 'DECISION':
+        return <TaskSetupDecision
+          responses={taskData.responses} 
+          onTaskDetailsChange={handleChange}  
+        />;
+      case 'SENTENCE':
+        return <TaskSetupSentence
+          responses={taskData.responses} 
+          onTaskDetailsChange={handleChange}  
+        />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <div>
       <Container>
@@ -59,14 +83,8 @@ function CreateTask() {
             expiry={taskData.expiry} 
             onTaskDetailsChange={handleChange} 
           />
-          <TaskSetupChoice
-            responses={taskData.responses} 
-            onTaskDetailsChange={handleChange}  
-          />
-          <TaskSetupDecision
-            responses={taskData.responses} 
-            onTaskDetailsChange={handleChange}  
-          />
+
+          {renderTaskSetup()}
 
           <WorkerRequirements 
             master={taskData.master} 
