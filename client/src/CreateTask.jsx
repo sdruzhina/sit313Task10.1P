@@ -8,12 +8,13 @@ function CreateTask() {
 
   // Form data
   const [taskData, setTaskData] = useState({
-
+    taskType: 'CHOICE',
   });
 
   // Event handler
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const {name, value} = e;
+    console.log(e);
     setTaskData((data) => {
       return {
         ...data,
@@ -29,7 +30,7 @@ function CreateTask() {
           New Task
         </Header>
         <Segment>
-          <TaskType onChange={handleChange} />
+          <TaskType taskType={taskData.taskType} onTaskTypeChange={handleChange} />
 
           <div className='action-buttons'>
             <Link to='/'>

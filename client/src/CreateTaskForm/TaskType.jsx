@@ -2,14 +2,14 @@ import React, { useState }  from 'react';
 import { Segment, Header, Button, Form, Checkbox } from 'semantic-ui-react';
 import './TaskType.css';
 
-function TaskType() {
+function TaskType(props) {
 
   // State
-  const [taskType, setTaskType] = useState('CHOICE');
+  const taskType = props.taskType;
 
   // Event handler
   const handleChange = (e, { value }) => {
-    setTaskType(value);
+    props.onTaskTypeChange({name: 'taskType', value: value});
   }
 
   return (
