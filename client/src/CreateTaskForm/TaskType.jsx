@@ -1,10 +1,9 @@
-import React, { useState }  from 'react';
-import { Segment, Header, Button, Form, Checkbox } from 'semantic-ui-react';
+import React from 'react';
+import { Form, Checkbox } from 'semantic-ui-react';
 import './TaskType.css';
 
 function TaskType(props) {
 
-  // State
   const taskType = props.taskType;
 
   // Event handler

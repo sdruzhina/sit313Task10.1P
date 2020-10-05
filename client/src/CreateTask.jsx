@@ -3,6 +3,7 @@ import './CreateTask.css';
 import { Container, Segment, Header, Button } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import TaskType from './CreateTaskForm/TaskType';
+import TaskDetails from './CreateTaskForm/TaskDetails';
 
 function CreateTask() {
 
@@ -31,6 +32,7 @@ function CreateTask() {
         </Header>
         <Segment>
           <TaskType taskType={taskData.taskType} onTaskTypeChange={handleChange} />
+          <TaskDetails taskType={taskData.TaskDetails} onTaskDetailsChange={handleChange} />
 
           <div className='action-buttons'>
             <Link to='/'>
