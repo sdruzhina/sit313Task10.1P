@@ -31,12 +31,14 @@ function CreateTask() {
   const [modalMessage, setModalMessage] = useState('');
   const [success, setSuccess] = useState(true);
 
+  // Open confirmation modal
   const openModal = (res) => {
     setSuccess(res.errors ? false : true);
     setModalMessage(res.message);
     setModalOpen(true);
   }
 
+  // Close confirmation modal
   const closeModal = () => {
     setModalOpen(false);
     if (success) {
@@ -64,6 +66,7 @@ function CreateTask() {
     });
   }
 
+  // Save the task to DB
   function saveTask() {
     fetch('http://localhost:8080/requester/tasks', {
       method: 'POST',
