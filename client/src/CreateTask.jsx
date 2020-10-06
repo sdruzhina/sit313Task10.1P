@@ -1,6 +1,7 @@
 import React, { useState }  from 'react';
+import { useHistory } from "react-router-dom";
 import './CreateTask.css';
-import { Container, Segment, Header, Button } from 'semantic-ui-react';
+import { Container, Segment, Header, Button, Modal } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import TaskType from './CreateTaskForm/TaskType';
 import TaskDetails from './CreateTaskForm/TaskDetails';
@@ -10,6 +11,8 @@ import TaskSetupDecision from './CreateTaskForm/TaskSetupDecision';
 import TaskSetupSentence from './CreateTaskForm/TaskSetupSentence';
 
 function CreateTask() {
+  // Router history
+  const history = useHistory();
 
   // Form data
   const [taskData, setTaskData] = useState({
@@ -23,11 +26,29 @@ function CreateTask() {
     reward: 0
   });
 
+  // Confirmation modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [success, setSuccess] = useState(true);
+
+  const openModal = (res) => {
+    setSuccess(res.errors ? false : true);
+    setModalMessage(res.message);
+    setModalOpen(true);
+  }
+
+  const closeModal = () => {
+    setModalOpen(false);
+    if (success) {
+      history.push('/');
+    }
+  }
+
   // Event handler
   const handleChange = (e) => {
     const {name, value} = e;
     setTaskData((data) => {
-      if (name != 'type') {
+      if (name !== 'type') {
         return {
           ...data,
           [name]: value
@@ -52,6 +73,7 @@ function CreateTask() {
       body: JSON.stringify(taskData)
     })
     .then(res => res.json())
+    .then((res) => openModal(res))
     .catch((err) => console.log(err));
   }
 
@@ -112,6 +134,22 @@ function CreateTask() {
           </div>
         </Segment>
       </Container>
+
+      <Modal
+        size='mini'
+        open={modalOpen}
+        onClose={closeModal}
+      >
+        <Modal.Header>{success ? 'Success' : 'Error'}</Modal.Header>
+        <Modal.Content>
+          <p>{modalMessage}</p>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button positive onClick={closeModal}>
+            OK
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   );
 }
